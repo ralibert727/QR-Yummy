@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>seek coding</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <link rel="stylesheet" href="profile.css">
+    <!---we had linked our css file----->
+</head>
+<body>
+    <div class="full-page" style="background: url(home-slide-1.jpg) no-repeat;">
+      
+    
+        <div class="navbar">
+            <div>
+                <a href="#" class="logo"><i class="fas fa-utensils"></i>QRYummy!!!</a>
+            </div>
+            
+        </div>
+        <div clas="form-box">
+		 <form id='register' name="registration" class='input-group-register' method="post" >
+		     <input type='text' name ="username"class='input-field'placeholder='First Name' id="CustomerID" required>
+		     <input type='text'name="fullname"class='input-field'placeholder='Last Name ' id="CustomerName" required>
+             <input type='tel' name="phnumber"class='input-field' placeholder='phonenumber' id="PhNumber" required>
+		     <input type='email'name="email"class='input-field'placeholder='Email Id' id="email" required>
+		     <input type='password'name="password"class='input-field'placeholder='password' id="password"required>
+             <input type='currentrestaurant' name="restaurantname" class='input-field'placeholder='CurrentRestaurant' id="CurrentRestaurant"required>
+		     
+                <button type='submit'class='submit-btn1' id="register" onclick="postapi()">Done</button>
+                
+                <button type='submit'class='submit-btn2' id="register" onclick="postapi()">Delete</button>
+            
+	         </form>
+            
+        </div>
+    </div>
+    <script>
+
+    </script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
