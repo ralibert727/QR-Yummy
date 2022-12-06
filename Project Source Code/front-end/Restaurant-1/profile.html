@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+ 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="profile.css">
+
+    <!---we had linked our css file----->
+</head>
+
+<body>
+  <div class="full-page" style="background: url(home-slide-1.jpg) no-repeat;">
+
+  <section style="height: 80px;" class="header">
+
+    <a href="#" class="logo"> <i class="fas fa-utensils"></i> QRYummy! </a>
+
+    <nav class="navbar">
+      <a  href="innerindex.html">Home</a>
+      <a  href="about.html">About</a>
+      <a  href="menu.html">Menu</a>
+      <a  href="order.html">Order</a>
+      
+      <a  href="profile.html">Profile</a>
+      <button onclick="logout()" style="font-size: 19px; margin:2rem; background-color: white;color:var(--light-grey);">Logout</button>
+
+
+    </nav>
+
+    <div id="menu-btn" class="fas fa-bars"></div>
+
+
+  </section>
+        
+        <div clas="form-box"  id='register' name="registration" class='input-group-register' method="post">
+		 <form >
+            <p style="color:#a8c0f0;text-align:center;font-size: large;font-weight: bolder;" >Your Details</p>
+<div id="profiledata" style="position: relative; top:25px;">
+             <p style=" color:#a8c0f0;font-size: large;" id="n">Name: &nbsp;&nbsp;&nbsp;</p>
+             <p style="color:#a8c0f0;font-size: large;" id="ph">Phone Number:&nbsp;&nbsp;&nbsp; </p>
+             <p style="color:#a8c0f0;font-size: large;" id="e">Email:&nbsp;&nbsp;&nbsp;</p>
+             <p style="color:#a8c0f0;font-size: large;" id="p">Password:&nbsp;&nbsp;&nbsp; </p>
+             <p style="color:#a8c0f0;font-size: large;" id="r">CurrentRestaurant: &nbsp;&nbsp;&nbsp;</p>
+            </div>
+
+
+
+  <script type="text/javascript">
+    // console.log("good DAYS ARE AHEAD")
+  function getCookie(cname)
+   {
+      let name = cname + "=";
+      let ca = document.cookie.split(';');
+      for(const element of ca) {
+        let c = element;
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+   }
+    // let decodedCookie = decodeURIComponent(document.cookie);
+    // console.log(decodedCookie)
+    // console.log('https://6lryqkzhae.execute-api.us-east-1.amazonaws.com/Dev/usersignin/'+decodedCookie)
+    //   var json={
+    //     Name:"Gayathri",
+    //     phNumber:"+123456789",
+    //     email: "abc@gmail.com",
+    //     password: "Password1234",
+    //     currentRestaurant: "Restaurant-1"
+    // }
+
+    let stringUrl= "https://6lryqkzhae.execute-api.us-east-1.amazonaws.com/Dev/usersignin/"+getCookie("userid");
+
+    // console.log("======",stringUrl)
+
+      fetch(stringUrl,
+      {
+      method: 'GET',
+      headers: {
+         'Content-type': 'application/json',
+      }
+      })
+      .then(function(response){ 
+      return response.json()})
+      .then(function(data)
+      {
+
+            console.log(data)
+
+            document.getElementById("n").innerHTML += data.body.CustomerName;
+            document.getElementById("ph").innerHTML += data.body.PhNumber;
+
+            document.getElementById("e").innerHTML += data.body.email;
+
+            document.getElementById("p").innerHTML += data.body.password;
+
+            document.getElementById("r").innerHTML += data.body.CurrentRestaurant;
+
+           
+
+
+
+            
+           
+
+      }).catch(error => console.error('Error:', error));
+    //   function appendData(data)
+    //   {
+    //     var main=document.getElementById("n");
+    //         for (var i=0;i<data.length;i++){
+    //         var label = document.createElement("label");
+    //         main.appendChild(label);
+
+    //         }
+    //   } 
+
+</script>
+            <!-- <label>PhNumber:</label>
+            <label>email:</label>
+            <label>password:</label>
+            <label>CurrentRestaurant:</label> -->
+            
+            <!-- <input type='text' name ="username"class='input-field'placeholder='First Name' id="CustomerID" required>
+		     <input type='text'name="fullname"class='input-field'placeholder='Last Name ' id="CustomerName" required>
+             <input type='tel' name="phnumber"class='input-field' placeholder='phonenumber' id="PhNumber" required>
+		     <input type='email'name="email"class='input-field'placeholder='Email Id' id="email" required>
+		     <input type='password'name="password"class='input-field'placeholder='password' id="password"required>
+             <input type='currentrestaurant' name="restaurantname" class='input-field'placeholder='CurrentRestaurant' id="CurrentRestaurant"required>
+		      -->
+              <!-- <form action="editprofile.html" method="get" target="_blank">
+
+             <button type='submit'class='submit-btn1' id="register" onclick="getapi()">Done</button>
+             <button type='submit'class='submit-btn2' id="register" >Delete</button>
+            </form> -->
+
+           <a  style="
+                    background-color: purple;
+                    padding: 15px 20px;
+                    font-size: 20px;
+                text-decoration:none;
+                font-weight:bold;
+                cursor:pointer;
+                position:relative; left:10px; top:60px;
+                top:60px;
+              
+                  " href="editprofile.html"  >  Edit Profile </a>
+            <button onclick="deleteUser()" style="
+            background-color: #ff6961;
+            padding: 15px 20px;
+            margin-left: 30px;
+            font-size: 20px;
+        text-decoration:none;
+        font-weight:bold;
+        cursor:pointer;
+        position:relative; right:2px; top:60px;
+        top:60px;
+        color:white;
+      
+          " >Delete</button>
+	         </form>
+             
+            
+        </div>
+    </div>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>
