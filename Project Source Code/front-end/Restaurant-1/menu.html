@@ -13,9 +13,355 @@
   <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/css/lightgallery.min.css">
-
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    
   <!-- custom css file link  -->
+   <!-- <script src="store.js" async></script> -->
+
   <link rel="stylesheet" href="style.css">
+   <style>
+    @import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700');
+@import url("https://fonts.googleapis.com/css?family=Metal+Mania");
+
+@font-face {
+    font-family: "Booter - Zero Zero";
+    src: url("Fonts/Booter - Zero Zero.woff") format("woff"),
+         url("Fonts/Booter - Zero Zero.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: Raleway;
+    color: #777;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+.nav ul {
+    margin: 0;
+}
+
+.nav li {
+    display: inline;
+}
+
+.nav a {
+    display: inline-block;
+    padding: .5em;
+    color: white;
+    text-decoration: none;
+}
+
+.main-nav {
+    text-align: center;
+    font-size: 1.1em;
+    font-weight: lighter;
+    border-bottom: 1px solid rgba(255, 255, 255, .3)
+}
+
+.main-nav li {
+    padding: 0 5%;
+}
+
+.nav a:hover {
+    background-color: rgba(255, 255, 255, .3)
+}
+
+.main-header {
+    background-color: rgba(0, 0, 0, .6);
+    background-image: url("Images/Header Background.jpg");
+    background-blend-mode: multiply;
+    background-size: cover;
+    padding-bottom: 30px;
+}
+
+.band-name {
+    text-align: center;
+    margin: 0;
+    font-size: 4em;
+    font-family: "Booter - Zero Zero";
+    font-weight: normal;
+    color: white;
+}
+
+.band-name-large {
+    font-size: 8em;
+}
+
+.content-section {
+    margin: 1em;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1.5em;
+}
+.section-header {
+    font-family: "Metal Mania";
+    font-weight: normal;
+    color: #333;
+    text-align: center;
+    font-size: 2.5em;
+}
+
+.about-band-image {
+    float: left;
+    height: 200px;
+    width: 200px;
+    margin: 15px;
+    border-radius: 50%;
+}
+
+.main-footer {
+    background-color: #56CCF2;
+    color: white;
+    padding: .25em 0;
+}
+
+.main-footer-container {
+    display: flex;
+    align-items: center;
+}
+
+.main-footer-container ul {
+    flex-grow: 1;
+    text-align: end;
+}
+
+.footer-nav li {
+    padding: 0 .5em;
+}
+
+.footer-nav img {
+    width: 30px;
+    height: 30px;
+}
+
+.btn {
+    text-align: center;
+    vertical-align: middle;
+    padding: .67em .67em;
+    cursor: pointer;
+}
+
+.btn-header {
+    margin: .5em 15% 2em 15%;
+    color: white;
+    border: 2px solid #2D9CDB;
+    background-color: rgba(255, 255, 255, .1);
+    border-radius: 0;
+    font-size: 1.5em;
+    font-weight: lighter;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.btn-header:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.btn-play {
+    display: block;
+    margin: 0 auto;
+    color: #2D9CDB;
+    font-size: 4em;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding: 0;
+    text-align: center;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #56CCF2;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #2D9CDB;
+}
+
+.tour-row {
+    border-bottom: 1px solid black;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+
+.tour-row:last-child {
+    border: none;
+}
+
+.tour-item {
+    display: inline-block;
+    padding-right: .5em;
+}
+
+.tour-date {
+    color: #555;
+    width: 11%;
+    font-weight: bold;
+}
+
+.tour-city {
+    width: 24%;
+}
+
+.tour-arena {
+    width: 42%;
+}
+
+.tour-btn {
+    max-width: 19%;
+}
+
+.shop-item {
+    margin: 30px;
+}
+
+.shop-item-title {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.shop-item-image {
+    height: 250px;
+}
+
+.shop-item-details {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+
+.shop-item-price {
+    flex-grow: 1;
+    color: #333;
+}
+
+.shop-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.cart-header {
+    font-weight: bold;
+    font-size: 1.25em;
+    color: #333;
+}
+
+.cart-column {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+    margin-right: 1.5em;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.cart-row {
+    display: flex;
+}
+
+.cart-item {
+    width: 45%;
+}
+
+.cart-price {
+    width: 20%;
+    font-size: 1.2em;
+    color: #333;
+}
+
+.cart-quantity {
+    width: 35%;
+}
+
+.cart-item-title {
+    color: #333;
+    margin-left: .5em;
+    font-size: 1.2em;
+}
+
+.cart-item-image {
+    width: 75px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.btn-danger {
+    color: white;
+    background-color: #EB5757;
+    border: none;
+    border-radius: .3em;
+    font-weight: bold;
+}
+
+.btn-danger:hover {
+    background-color: #CC4C4C;
+}
+
+.cart-quantity-input {
+    height: 34px;
+    width: 50px;
+    border-radius: 5px;
+    border: 1px solid #56CCF2;
+    background-color: #eee;
+    color: #333;
+    padding: 0;
+    text-align: center;
+    font-size: 1.2em;
+    margin-right: 25px;
+}
+
+.cart-row:last-child {
+    border-bottom: 1px solid black;
+}
+
+.cart-row:last-child .cart-column {
+    border: none;
+}
+
+.cart-total {
+    text-align: end;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.cart-total-title {
+    font-weight: bold;
+    font-size: 1.5em;
+    color: black;
+    margin-right: 20px;
+}
+
+.cart-total-price {
+    color: #333;
+    font-size: 1.1em;
+}
+
+.btn-purchase {
+    display: block;
+    margin: 40px auto 80px auto;
+    font-size: 1.75em;
+}
+   </style>
+
 
 </head>
 
@@ -47,146 +393,23 @@
   </section>
 
   <!-- header section ends    -->
-  <section class="food" id="food">
-
-    <div class="heading">
-      <span>popular dishes</span>
-      <h3>our delicious food</h3>
-    </div>
-
-    <div class="swiper food-slider">
-
-      <div class="swiper-wrapper">
-
-        <div class="swiper-slide slide" data-name="food-1">
-          <img src="food-img-1.png" alt="">
-          <h3>delicious food</h3>
-          <div class="price">$49.99</div>
-        </div>
-
-        <div class="swiper-slide slide" data-name="food-2">
-          <img src="food-img-2.png" alt="">
-          <h3>delicious food</h3>
-          <div class="price">$49.99</div>
-        </div>
-
-        <div class="swiper-slide slide" data-name="food-3">
-          <img src="food-img-3.png" alt="">
-          <h3>delicious food</h3>
-          <div class="price">$49.99</div>
-        </div>
-
-        <div class="swiper-slide slide" data-name="food-4">
-          <img src="food-img-4.png" alt="">
-          <h3>delicious food</h3>
-          <div class="price">$49.99</div>
-        </div>
-
-        <div class="swiper-slide slide" data-name="food-5">
-          <img src="food-img-5.png" alt="">
-          <h3>delicious food</h3>
-          <div class="price">$49.99</div>
-        </div>
-
-      </div>
-
-      <div class="swiper-pagination"></div>
-
-    </div>
-
-  </section>
-
-  <!-- food section ends -->
-
-  <!-- food preview section starts  -->
-
-  <section class="food-preview-container">
-
-    <div id="close-preview" class="fas fa-times"></div>
-
-    <div class="food-preview" data-target="food-1">
-      <img src="food-img-1.png" alt="">
-      <h3>delicious food</h3>
-      <div class="stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, hic!</p>
-      <div class="price">$49.99</div>
-      <a href="#" class="btn">buy now</a>
-    </div>
-
-    <div class="food-preview" data-target="food-2">
-      <img src="food-img-2.png" alt="">
-      <h3>delicious food</h3>
-      <div class="stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, hic!</p>
-      <div class="price">$49.99</div>
-      <a href="#" class="btn">buy now</a>
-    </div>
-
-    <div class="food-preview" data-target="food-3">
-      <img src="food-img-3.png" alt="">
-      <h3>delicious food</h3>
-      <div class="stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, hic!</p>
-      <div class="price">$49.99</div>
-      <a href="#" class="btn">buy now</a>
-    </div>
-
-    <div class="food-preview" data-target="food-4">
-      <img src="food-img-4.png" alt="">
-      <h3>delicious food</h3>
-      <div class="stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, hic!</p>
-      <div class="price">$49.99</div>
-      <a href="#" class="btn">buy now</a>
-    </div>
-
-    <div class="food-preview" data-target="food-5">
-      <img src="food-img-5.png" alt="">
-      <h3>delicious food</h3>
-      <div class="stars">
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-        <i class="fas fa-star"></i>
-      </div>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, hic!</p>
-      <div class="price">$49.99</div>
-      <a href="#" class="btn">buy now</a>
-    </div>
-
-  </section>
-
-  <!-- food preview section ends -->
 <section class="menu" id="menu">
+   <div class="heading" id="american">
+<span>   Select your cuisine:
+<select id="cuisine-dropdown" onchange="goToSection()">
+  <option value="">--Please choose an option--</option>
+  <option value="#american">American</option>
+  <option value="#indian">Indian</option>
+  <option value="#japanese">Japanese</option>
+  <option value="#chinese">Chinese</option>
+</select>
+</span></div>
 
-   <div class="heading">
+<!-- American cusine -->
+
+   <div class="heading" id="american">
       <span>our menu</span>
-      <h3>our popular dishes</h3>
+      <h3>our American Cuisine</h3>
    </div>
 
    <div class="swiper menu-slider">
@@ -194,49 +417,100 @@
       <div class="swiper-wrapper">
 
          <div class="swiper-slide slide">
-            <h3 class="title">breakfast</h3>
+            <h3 class="title">Appetizers</h3>
             <div class="box-container">
                <div class="box">
                   <div class="info">
-                     <h3>morning breakfast</h3>
-                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                     <img src="food-img-2.png"  alt="" width="100" 
+                     height="100" >
+                     <h3 class="shop-item-title">Buffalo Wings</h3>
+                     <p>Buffalo wings are a spicy appetizer made from chicken wings that have been deep-fried and coated in a hot sauce made from butter and cayenne pepper.</p>
                   </div>
-                  <div class="price">$49.99</div>
+                  <div class="price">$8.99</div>
+                  <!-- <button onclick="decrement()"><i class="fas fa-minus"></i></button> 
+                  <button onclick="increment()"><i class="fas fa-plus"></i></button> -->
+                  <button onclick="addToCartClicked()" class="btn btn-danger" type="button"   data-action="add-to-cart">+</button>
+               
+               </div>
+              
+               <div class="box" id="cart">
+                  <div class="info" >
+                     <img id="shop-item-image" src="food-img-2.png"  alt="" width="100" 
+                     height="100" alt/> 
+                     <h3 id="shop-item-title">Mozzarella sticks</h3>
+                     <p>These are deep-fried pieces of mozzarella cheese coated in breadcrumbs and served with marinara sauce for dipping.</p>
+                  </div>
+
+                  <div id="shop-item-price">$7.99</div>
+
+                  <button type="button"  class="info" id="shopbutton"  onclick="addOrder()"  >+</button>
                </div>
                <div class="box">
                   <div class="info">
+                     <img src="food-img-3.png"  alt="" width="100" height="100" >
+                     <h3>Nachos</h3>
+                     <p>Nachos are a popular Tex-Mex dish made from tortilla chips topped with melted cheese, salsa, sour cream, and various other toppings such as jalapeños, guacamole, and black beans.</p>
+                  </div>
+                  <div class="price">$9.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <!-- <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button>  -->
+                  <button class="btn" type="button"
+                    data-action="add-to-cart">+</button>
+               </div>
+
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-3.png"  alt="" width="100" 
+                     height="100" >
+                     <h3>Onion Rings</h3>
+                     <p>These are battered and deep-fried rings of onion served with dipping sauce, such as ranch or ketchup.</p>
+                  </div>
+                  <div class="price">$7.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <!-- <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button>  -->
+                  <button class="btn" type="button"
+                    data-action="add-to-cart">+</button>
+               </div>
+               <div class="swiper-slide slide">
+                  <h3 class="title">Appetizers</h3>
+                  <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-4.png"  alt="" width="100" 
+                     height="100" >
                      <h3>morning breakfast</h3>
                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
                   </div>
                   <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
                </div>
                <div class="box">
                   <div class="info">
+                     <img src="food-img-5.png"  alt="" width="100" 
+                     height="100" >
                      <h3>morning breakfast</h3>
                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
                   </div>
                   <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
                </div>
                <div class="box">
                   <div class="info">
+                     <img src="food-img-5.png"  alt="" width="100" 
+                     height="100" >
                      <h3>morning breakfast</h3>
                      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
                   </div>
                   <div class="price">$49.99</div>
-               </div>
-               <div class="box">
-                  <div class="info">
-                     <h3>morning breakfast</h3>
-                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
-                  </div>
-                  <div class="price">$49.99</div>
-               </div>
-               <div class="box">
-                  <div class="info">
-                     <h3>morning breakfast</h3>
-                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
-                  </div>
-                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
                </div>
             </div>
          </div>
@@ -405,14 +679,819 @@
    </div>
 
 </section>
+<!-- Japanese cusine-->
 
+<section class="menu" id="menu">
+
+   <div class="heading" id="japanese">
+      <span>our menu</span>
+      <h3>our Japanese Cusine</h3>
+   </div>
+
+   <div class="swiper menu-slider">
+
+      <div class="swiper-wrapper">
+
+         <div class="swiper-slide slide">
+            <h3 class="title">breakfast</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-1.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-2.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-3.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-4.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-5.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-5.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">lunch</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">dinner</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">drinks</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">dessert</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+
+   </div>
+
+</section>
+ <!-- Indian cusine-->
+ <section class="menu" id="menu">
+
+   <div class="heading" id="indian">
+      <span>our menu</span>
+      <h3>our Indian Cusine</h3>
+   </div>
+
+   <div class="swiper menu-slider">
+
+      <div class="swiper-wrapper">
+
+         <div class="swiper-slide slide">
+            <h3 class="title">breakfast</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-1.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-2.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-3.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-4.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-5.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-5.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">lunch</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">dinner</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">drinks</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">dessert</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+
+   </div>
+
+</section>
+ <!-- Chinese cusine-->
+ <section class="menu" id="menu">
+
+   <div class="heading" id="chinese">
+      <span>our menu</span>
+      <h3>our Chinese Cusine</h3>
+   </div>
+
+   <div class="swiper menu-slider">
+
+      <div class="swiper-wrapper">
+
+         <div class="swiper-slide slide">
+            <h3 class="title">breakfast</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-1.png"  alt="" width="80" 
+height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-2.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-3.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-4.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-5.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <img src="food-img-5.png"  alt="" width="80" 
+                     height="80" >
+                     <h3>morning breakfast</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+                  <input id="demoInput" type="number" min=100 max=110>
+                  <button onclick="increment()"><i class="fas fa-minus"></i></button>
+                  <button onclick="decrement()"><i class="fas fa-plus"></i></button> 
+               </div>
+            </div>
+         </div>
+
+
+         <div class="swiper-slide slide">
+            <h3 class="title">lunch</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious lunch</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">dinner</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>delicious dinner</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">drinks</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>cold drinks</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+         <div class="swiper-slide slide">
+            <h3 class="title">dessert</h3>
+            <div class="box-container">
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+               <div class="box">
+                  <div class="info">
+                     <h3>sweet dessets</h3>
+                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex, dolores.</p>
+                  </div>
+                  <div class="price">$49.99</div>
+               </div>
+            </div>
+         </div>
+
+      </div>
+
+      
+   
+     
+   </section>
+
+  <div class="swiper-pagination"></div>
+
+   </div>
+   
 <!-- menu section ends -->
- 
+<section class="container content-section">
+  <h2 class="section-header">CART</h2>
+  <div class="cart-row">
+      <span class="cart-item cart-header cart-column">ITEM</span>
+      <span class="cart-price cart-header cart-column">PRICE</span>
+      <span class="cart-quantity cart-header cart-column">QUANTITY</span>
+  </div>
+  <div class="cart-items">
+  </div>
+  <div class="cart-total">
+      <strong class="cart-total-title">Total</strong>
+      <span class="cart-total-price">$0</span>
+  </div>
+  <button class="btn btn-primary btn-purchase" type="button">PURCHASE</button>
+</section>
+        <!-- <footer class="main-footer">
+            <div class="container main-footer-container">
+                <h3 class="band-name">The Generics</h3>
+                <ul class="nav footer-nav">
+                    <li>
+                        <a href="https://www.youtube.com" target="_blank">
+                            <img src="Images/YouTube Logo.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.spotify.com" target="_blank">
+                            <img src="Images/Spotify Logo.png">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com" target="_blank">
+                            <img src="Images/Facebook Logo.png">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer> -->
+
+        <!-- end -->
 <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightgallery-js/1.4.0/js/lightgallery.min.js"></script>
 
   <!-- custom js file link  -->
-  <script src="script.js"></script>
+  <script src="script.js" ></script>
 
    
 </body>
