@@ -3,17 +3,22 @@ from dbconnection import modifyuserdata
 from dbconnection import getuserdata
 from dbconnection import deleteuserdata
 from dbconnection import login
+from userInputValidation import userValidation
+from dbconnection import selectCuisinegetMenu
+from dbconnection import getMenu
+from dbconnection import addOrders
+from dbconnection import reviewPreviousOrder
 
 def lambda_handler(event, context):
     
-    print(event)
-    print(context)
+    # print(event)
+    # print(context)
 
     if event['context']['pathARN'].split("/")[-1] == 'login':
         
         if event['context']['method'] == "POST":
 
-            print ("LOGIN POST METHOD")
+            #print ("LOGIN POST METHOD")
 
             loginResponse = login (event ['body'])
 
@@ -41,7 +46,7 @@ def lambda_handler(event, context):
         if event['context']['method'] == "GET":
 
             CustomerID = event['CustomerID']
-            print ("GET METHOD")
+            #print ("GET METHOD")
             getuserdataResponse = getuserdata (CustomerID)
 
             if getuserdataResponse ['status'] == "success":
@@ -60,7 +65,7 @@ def lambda_handler(event, context):
         elif event['context']['method'] == "DELETE":
 
             CustomerID = event ['CustomerID']
-            print ("DELETE METHOD")
+            #print ("DELETE METHOD")
             deleteuserdataResponse = deleteuserdata (CustomerID)
 
 
@@ -86,26 +91,36 @@ def lambda_handler(event, context):
 
         if event['context']['method'] == "POST":
 
-            print ("POST METHOD")
+            #print ("POST METHOD")
 
-            insertuserdataResponse = insertuserdata (event ['body'])
+            userValidationResponse= userValidation (event ['body'])
 
-            if insertuserdataResponse ['status'] == "success":
+            if userValidationResponse["status"]=="success":
 
-                return {
-                    "status": "success", 
-                    "body": insertuserdataResponse ['message']
-                    }
+                insertuserdataResponse = insertuserdata (event ['body'])
+
+                if insertuserdataResponse ['status'] == "success":
+
+                    return {
+                        "status": "success", 
+                        "body": insertuserdataResponse ['message']
+                        }
+
+                else:
+                    return{
+                        "status": "error", 
+                        "body": "Error in inserting new user details"
+                        }
 
             else:
                 return{
                     "status": "error", 
-                    "body": "Error in inserting new user details"
-                    }
+                    "body": userValidationResponse["message"]
+                }
 
         elif event['context']['method'] == "PUT":
 
-            print ("PUT METHOD")
+            #print ("PUT METHOD")
 
             if event['body']['CustomerName'] == '' and event['body']['PhNumber'] == '' and event['body']['email'] == '' and event['body']['password'] == '' and event['body']['CurrentRestaurant']=='':
                 
@@ -149,10 +164,116 @@ def lambda_handler(event, context):
                 'statusCode': 401,
                 'body': 'Error in parsing method'
             }
+
+    elif event['context']['pathARN'].split("/")[-2] == 'addtocart':
+
+        if event['context']['method'] == "GET":
+
+            #print ("GET METHOD")
+            reviewPreviousOrderResponse = reviewPreviousOrder (event['customerName'])
+
+            if reviewPreviousOrderResponse ['status'] == "success":
+
+                return {
+                    "status": "success", 
+                    "body": reviewPreviousOrderResponse ['body']
+                    }
+
+            else:
+                return{
+                    "status": "error", 
+                    "body": "Error in fetching last order details"
+                    }
+            
+
+        else:
+            return {
+                'statusCode': 401,
+                'body': 'Error in parsing method'
+            }
+
         
+    elif event['context']['pathARN'].split("/")[-1] == 'addtocart':
+
+        if event['context']['method'] == "POST":
+
+            #print ("POST METHOD")
+
+            addOrdersResponse= addOrders (event["body"])
+
+            if addOrdersResponse ['status'] == "success":
+
+                return {
+                    "status": "success", 
+                    "body": addOrdersResponse ['message']
+                    }
+
+            else:
+                return{
+                    "status": "error", 
+                    "body": "Error in inserting new orders"
+                    }
+
+        else:
+            return {
+                'statusCode': 401,
+                'body': 'Error in parsing method'
+            }
+
+    elif event['context']['pathARN'].split("/")[-2] == 'menufetch':
+
+        #For getting cusine list of specific restaurant
+        if event['context']['method'] == "GET":
+
+            # print ("GET METHOD")
+            # put in API body in cusine: restaurant value
+            selectCuisinegetMenuResponse = selectCuisinegetMenu (event['cuisine'])
+
+            if selectCuisinegetMenuResponse ['status'] == "success":
+
+                return {
+                    "status": "success", 
+                    "body": selectCuisinegetMenuResponse ['body']
+                    }
+
+            else:
+                return{
+                    "status": "error", 
+                    "body": "Error in fetching cuisine details"
+                    }
+            
+    elif event['context']['pathARN'].split("/")[-2] == 'getmenu':
+
+        #For getting menu list of specific restaurant
+        if event['context']['method'] == "GET":
+
+            #print ("GET METHOD")
+            getMenuResponse = getMenu (event['restaurantName'])
+
+            if getMenuResponse ['status'] == "success":
+
+                return {
+                    "status": "success", 
+                    "body": getMenuResponse ['body']
+                    }
+
+            else:
+                return{
+                    "status": "error", 
+                    "body": "Error in fetching menu details"
+                    }
+            
     else:
 
         return {
             'statusCode': 401,
             'body': 'Error in parsing Path ARN'
         }
+
+
+
+
+
+# event = {'body': {}, 'cuisine': 'Saptagiri', 'context': {'method': 'GET', 'pathARN': '/test/menufetch/Indian'}}
+
+# print(lambda_handler (event, None))

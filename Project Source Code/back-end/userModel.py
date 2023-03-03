@@ -14,4 +14,4 @@ class Customer(BaseModel):
     CurrentRestaurant = pw.CharField(column_name="CurrentRestaurant")
 
     class Meta:
-        table_name = 'Customer'
+        table_name = ''

@@ -15,4 +15,4 @@ class Cart(BaseModel):
     CustomerName = pw.CharField(column_name="CustomerName")
 
     class Meta:
-        table_name = 'Cart'
+        table_name = ''
