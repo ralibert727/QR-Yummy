@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Review Previous Orders</title>
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <link rel="stylesheet" href="style.css">
+
+  <style>
+        body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #dcdcdc;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  background-color: white;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main {
+  margin: 20px;
+}
+
+section {
+  margin-bottom: 20px;
+}
+
+section h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+footer p {
+  margin: 0;
+}
+
+    </style>
+  </head>
+  <body>
+    <!-- <header>
+      <h1>Review Previous Orders</h1>
+    </header> -->
+    <!-- <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">About</a></li>
+      </ul>
+    </nav> -->
+
+    <section class="header">
+
+        <a href="#" class="logo"> <i class="fas fa-utensils"></i> QRYummy! </a>
+    
+        <nav class="navbar">
+          <a  href="innerindex.html">Home</a>
+          <a  href="about.html">About</a>
+          <a  href="menu.html">Menu</a>
+          <a  href="order.html">Order</a>
+          
+          <a  href="profile.html">Profile</a>
+          <!-- <button onclick="logout()" style="font-size: 19px; margin:2rem; background-color: white;color:var(--light-grey);">Logout</button> -->
+    
+    
+        </nav>
+    
+        <div id="menu-btn" class="fas fa-bars"></div>
+    
+    
+      </section>
+    <main>
+      <section>
+        <h2>Order History</h2>
+        <table>
+          <tr>
+            <th>Date</th>
+            <th>Order Number</th>
+            <th>Items</th>
+            <th>Total</th>
+          </tr>
+          <tr>
+            <td>03/01/2022</td>
+            <td>001</td>
+            <td>Mozarella Sticks</td>
+            <td>$7.99</td>
+          </tr>
+          <tr>
+            <td>03/02/2022</td>
+            <td>002</td>
+            <td>Buffalo Wings</td>
+            <td>$8.99</td>
+          </tr>
+          <tr>
+            <td>03/3/2022</td>
+            <td>003</td>
+            <td>Nachos</td>
+            <td>$9.99</td>
+          </tr>
+        </table>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2022 Restaurant Name</p>
+    </footer>
+  </body>
+</html>
