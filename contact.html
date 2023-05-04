@@ -1,0 +1,141 @@
+<html>
+
+<head>
+        
+<!-- <script src="https://smtpjs.com/v3/smtp.js"></script> -->
+<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+<script type="text/javascript">
+        function sendEmail() {
+
+ const supportForm = document.getElementById("support-form");
+
+supportForm.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
+
+  // Send email to support team
+  emailjs.send({
+    Host: "smtp.gmail.com",
+    Username: "qryummyteam@gmail.com",
+    Password: "qryummyteam@123",
+    To: "qryummyteam@gmail.com",
+    From: email,
+    Subject: "Support Request from " + name,
+    Body: message,
+  }).then(function () {
+    // Send ticket confirmation email to user
+    emailjs.send({
+      Host: "smtp.gmail.com",
+      Username: "qryummyteam@gmail.com",
+      Password: "qryummyteam@123",
+      To: email,
+      From: "qryummyteam@gmail.com",
+      Subject: "Support Request Confirmation",
+      Body:
+        "Dear " +
+        name +
+        ",\n\nThank you for contacting our customer support team. Your support request has been received and a ticket has been opened. We will respond to your request within 24 hours.\n\nBest regards,\nThe Support Team",
+    }).then(function () {
+      // Show success message to user
+      alert("Your message has been sent. A ticket has been opened and confirmation email has been sent to your email address.");
+      // Reset form
+      supportForm.reset();
+    });
+  });
+});
+
+
+}
+   
+   
+   </script>
+
+    <style>
+        .contact-form {
+  margin: auto;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 10px;
+}
+
+.contact-form h2 {
+  text-align: center;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.contact-form textarea {
+  height: 100px;
+}
+
+.contact-form button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.contact-form button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+.contact-form input[type="tel"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("phone.png");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-position: 5px center;
+  padding-left: 35px;
+}
+
+    </style>
+</head>
+    <body>
+
+
+<div class="contact-form">
+  <h2>Contact Customer Support</h2>
+    <form id="support-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" onclick="sendEmail()">Send</button>
+    </form>
+  </div>
+  
+  
+</div>
+
+</body>
+</html
