@@ -1,0 +1,119 @@
+<html>
+    <head>
+        <style>
+   
+            .wallet {
+  margin: 20px;
+  padding: 20px;
+  background-color: lightpink;
+  border: 1px solid brown;
+  border-radius: 5px;
+}
+
+.wallet h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.wallet p {
+  font-size: 18px;
+}
+
+.wallet form {
+  margin-top: 20px;
+}
+
+.wallet label {
+  font-size: 16px;
+}
+
+.wallet input {
+  font-size: 16px;
+  padding: 10px;
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid brown;
+}
+
+.wallet button {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.wallet button:hover {
+  background-color: #3e8e41;
+}
+
+.wallet-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+              background-color: lightsalmon;
+
+}
+
+.wallet {
+  width: 50%;
+  max-width: 400px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+        </style>
+    </head>
+
+<body>
+<div class="wallet-container">
+<div class="wallet">
+    <h2>Your Wallet</h2>
+    <p>Balance: $<span id="balance">100.00</span></p>
+    <form>
+      <label for="amount">Add Amount:</label>
+      <input type="number" id="amount" name="amount" min="1" max="1000" required>
+      <button type="submit" id="add-btn">Add</button>
+    </form>
+  </div>
+  </div>
+  
+   <!-- <div class="wallet-container">
+  <div class="wallet">
+    <h3>Add Money to Wallet</h3>
+    <form>
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" required>
+      <button type="submit">Add Money</button>
+    </form>
+  </div>
+</div> -->
+
+
+  <script>
+
+const balanceEl = document.getElementById('balance');
+const amountEl = document.getElementById('amount');
+const addBtn = document.getElementById('add-btn');
+
+addBtn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const amount = parseFloat(amountEl.value);
+  if (isNaN(amount) || amount < 1 || amount > 1000) {
+    alert('Please enter a valid amount between 1 and 1000');
+    return;
+  }
+  const balance = parseFloat(balanceEl.innerText);
+  const newBalance = balance + amount;
+  balanceEl.innerText = newBalance.toFixed(2);
+  alert(`Successfully added $${amount.toFixed(2)} to your wallet!`);
+});
+
+
+  </script>
+  </body>
+  </html>
