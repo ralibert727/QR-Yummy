@@ -1,0 +1,237 @@
+<html>
+  <head>
+    <style>
+      .wallet {
+        margin: 20px;
+        padding: 20px;
+        background-color: lightsalmon;
+        border: 1px solid brown;
+        border-radius: 5px;
+       
+      }
+
+      .wallet h2 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .wallet p {
+        font-size: 18px;
+      }
+
+      .wallet form {
+        margin-top: 20px;
+      }
+
+      .wallet label {
+        font-size: 16px;
+      }
+
+      .wallet input {
+        font-size: 16px;
+        padding: 10px;
+        margin-right: 10px;
+        border-radius: 5px;
+        border: 1px solid brown;
+      }
+
+      .wallet button {
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+      }
+
+      .wallet button:hover {
+        background-color: #3e8e41;
+      }
+
+      .wallet-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: lightpink;
+
+      }
+
+      .wallet {
+        width: 50%;
+        max-width: 400px;
+        padding: 20px;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: -200px; /* Move the container upwards by 40 pixels */
+      }
+
+
+      .payment-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .payment-modal.active {
+      display: flex;
+    }
+
+    .payment-modal-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      text-align: center;
+    }
+/*     
+header {
+  background-color: #dcdcdc;
+  padding: 20px;
+}
+
+header h1 {
+  margin: 0;
+}
+
+nav {
+  background-color: white;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+} */
+    </style>
+
+  </head>
+
+  <body>
+    <img src="navy.jpeg" width="1220px" ></img>
+
+         <div id="menu-btn" class="fas fa-bars"></div>
+    <div class="wallet-container">
+      <div class="wallet" style=" width: 60%; /* Increase the width percentage as desired */
+      max-width: 700px; color: white; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif"     
+ >
+        <h2>Your Wallet</h2>
+        <p>Balance: $<span id="balance">100.00</span></p>
+        <form>
+          <label for="amount">Add Amount:</label>
+          <input type="number" id="amount" name="amount" min="1" max="1000" required>
+          <button type="button" id="add-btn">Add</button>
+        </form>
+      </div>
+    </div>
+
+
+    <div id="payment-modal" class="payment-modal">
+      <div class="payment-modal-content">
+        <h2>Payment Details</h2>
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" placeholder="Enter card number" required>
+        <label for="card-holder-name">Card Holder Name:</label>
+        <input type="text" id="card-holder-name" placeholder="Enter card holder name" required>
+        
+        <label for="expiry">Expiry Date:</label>
+        <input type="text" id="expiry" placeholder="MM/YY" required>
+        <label for="cvv">CVV:</label>
+        <input type="number" id="cvv" placeholder="Enter CVV" required>
+        <button onclick="completePayment()">Pay</button>
+      </div>
+    </div>
+  </div>
+    <script>
+      const balanceEl = document.getElementById('balance');
+    const amountEl = document.getElementById('amount');
+    const addBtn = document.getElementById('add-btn');
+    const paymentModal = document.getElementById('payment-modal');
+
+    addBtn.addEventListener('click', (event) => {
+      event.preventDefault();
+      const amount = parseFloat(amountEl.value);
+      if (isNaN(amount) || amount < 1 || amount > 1000) {
+        alert('Please enter a valid amount between 1 and 1000');
+        return;
+      }
+
+      paymentModal.classList.add('active');
+    });
+    function completePayment() {
+  const success = Math.random() < 0.8; // 80% chance of success
+  const amount = parseFloat(amountEl.value);
+  const balance = parseFloat(balanceEl.innerText);
+  const newBalance = balance + amount;
+  balanceEl.innerText = newBalance.toFixed(2);
+
+  if (success) {
+    const cardHolderName = document.getElementById('card-holder-name').value;
+    const cardNumber = document.getElementById('card-number').value;
+    const expiry = document.getElementById('expiry').value;
+    const cvv = document.getElementById('cvv').value;
+
+    // Perform API POST request to save card holder name and amount
+    const apiUrl = 'https://6lryqkzhae.execute-api.us-east-1.amazonaws.com/Dev/addmoney';
+    const data = {
+      customerName: cardHolderName,
+      money: parseFloat(amountEl.value),
+    };
+
+    fetch(apiUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        const success = response.success;
+        alert(`Successfully added $${amount.toFixed(2)} to your wallet!`);
+
+       
+
+        
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        alert('An error occurred during payment. Please try again later.');
+       
+      });
+  } 
+  paymentModal.classList.remove('active');
+    amountEl.value = '';
+}
+
+
+    </script>
+  </body>
+</html>

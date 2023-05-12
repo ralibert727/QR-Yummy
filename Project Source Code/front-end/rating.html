@@ -1,0 +1,290 @@
+<html>
+    <head>
+        <style>
+            body {
+  background-color: rgb(225, 252, 243);
+
+}
+
+            .food-rating {
+  margin: 20px auto;
+  padding: 20px;
+  width: 80%;
+  background-color: rgb(199, 252, 235);
+   /* rgb(137, 245, 210); */
+}
+
+.food-rating form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.food-rating label {
+  margin-bottom: 10px;
+}
+
+.food-rating select, .food-rating textarea {
+  margin-bottom: 20px;
+}
+
+.food-rating button {
+  margin-top: 10px;
+}
+
+.food-rating hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #ccc;
+}
+
+.food-rating .comment {
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+}
+
+        </style>
+    </head>
+    <body>
+      <img src="navy.jpeg" width="1300px" ></img>
+
+        <div class="food-rating">
+            <h3>Rate us please :)</h3>
+            <form>
+                <!-- <label for="customer-name">Customer Name:
+                <input type="text" id="customer-name"></label>
+         -->
+                <label for="dish-name">Dish You Liked:
+                <input type="text" id="dish-name"></label>
+              <label for="rating">Rating:
+              <select id="rating">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+              </select>
+            </label>
+              <label for="comment">Comment:</label>
+              <textarea id="comment" rows="4" cols="50"></textarea>
+              <br>
+              <button type="button" id="post" onclick="submitRating()">Submit</button>
+            </form>
+            <hr>
+            <h3>Recent comments:</h3>
+            <div id="comment-section"></div>
+          </div>
+          <script>
+           const commentSection = document.getElementById('comment-section');
+
+function submitRating() {
+  let post = document.getElementById("post")
+
+  //  let customerName=getCookie("userid");
+  let customerName="Gayathri";
+  let rating = document.getElementById('rating').value;
+  let comment = document.getElementById('comment').value;
+  // const cust = document.getElementById('customer-name').value;
+  const food = document.getElementById('dish-name').value;
+
+  if (comment.trim() !== '') {
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+    commentDiv.innerHTML = ` <p style="font-family: Sans-serif;"> Gayathri &nbsp;  <span style=" color: yellow;
+      font-size: 24px;">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+    </p>
+        
+      <p style="color: green;">Rating: ${rating}     
+</p>
+      <p> Had ${food}. ${comment}</p>
+    `;
+    commentSection.appendChild(commentDiv);
+
+    document.getElementById('rating').selectedIndex = 0;
+    document.getElementById('comment').value = '';
+  }
+  post.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    console.log("in");
+
+    fetch('https://6lryqkzhae.execute-api.us-east-1.amazonaws.com/Dev/rating', {
+        method: 'POST',
+        body: JSON.stringify({
+          customerName : customerName,
+    rating: rating,
+    comment:comment
+    
+
+        }),
+       
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      // console.log("in vLUES");
+      .then(function(response) {
+        return response.json();
+        
+      })
+      .then(function(data) {
+        console.log(data);
+      })
+      
+      .catch(error => console.error('Error:', error));
+  }); // Added closing bracket for addEventListener
+ 
+} // Ad
+
+
+
+
+
+
+          </script>
+    </body>
+</html>
+<!-- 
+<html>
+  <head>
+    <style>
+      .food-rating {
+        margin: 20px auto;
+        padding: 20px;
+        width: 80%;
+        background-color: #f2f2f2;
+      }
+
+      .food-rating form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .food-rating label {
+        margin-bottom: 10px;
+      }
+
+      .food-rating select,
+      .food-rating textarea {
+        margin-bottom: 20px;
+      }
+
+      .food-rating button {
+        margin-top: 10px;
+      }
+
+      .food-rating hr {
+        margin: 20px 0;
+        border: none;
+        border-top: 1px solid #ccc;
+      }
+
+      .food-rating .comment {
+        margin: 10px 0;
+        padding: 10px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+      }
+
+      /* Added styles for stars */
+      .food-rating .stars {
+        font-size: 24px;
+        color: #ccc;
+      }
+
+      .food-rating .stars span {
+        display: inline-block;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .food-rating .stars span:before {
+        content: '\2605';
+        position: absolute;
+        opacity: 0;
+      }
+
+      .food-rating .stars span:hover:before,
+      .food-rating .stars span:hover ~ span:before,
+      .food-rating .stars span.selected:before {
+        opacity: 1;
+        color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="food-rating">
+      <h3>Rate us please :)</h3>
+      <form>
+        <label for="customer-name">Customer Name:
+          <input type="text" id="customer-name" />
+        </label>
+
+        <label for="dish-name">Dish You Liked:
+          <input type="text" id="dish-name" />
+        </label>
+
+        <label for="rating">Rating:</label>
+        <div class="stars">
+          <span onclick="setRating(5)" title="5 stars">&#9733;</span>
+          <span onclick="setRating(4)" title="4 stars">&#9733;</span>
+          <span onclick="setRating(3)" title="3 stars">&#9733;</span>
+          <span onclick="setRating(2)" title="2 stars">&#9733;</span>
+          <span onclick="setRating(1)" title="1 star">&#9733;</span>
+        </div>
+
+        <label for="comment">Comment:</label>
+        <textarea id="comment" rows="4" cols="50"></textarea>
+        <br />
+        <button type="button" onclick="submitRating()">Submit</button>
+      </form>
+      <hr />
+      <h3>Recent comments:</h3>
+      <div id="comment-section"></div>
+    </div>
+    <script>
+      const commentSection = document.getElementById('comment-section');
+      let selectedRating = 0;
+
+      // Sets the rating to the selected value and updates the stars
+      function setRating(value) {
+        selectedRating = value;
+        const stars = document.querySelectorAll('.food-rating .stars span');
+
+        for (let i = 0; i < stars.length; i++) {
+          if (i < value) {
+            stars[i].classList.add('selected');
+          } else {
+            stars[i].classList.remove('selected');
+          }
+        }
+      }
+
+      const commentSection = document.getElementById('comment-section');
+
+function submitRating() {
+  const rating = document.getElementById('rating').value;
+  const comment = document.getElementById('comment').value;
+  const cust = document.getElementById('customer-name').value;
+  const food = document.getElementById('dish-name').value;
+
+  if (comment.trim() !== '') {
+    const commentDiv = document.createElement('div');
+    commentDiv.classList.add('comment');
+    commentDiv.innerHTML = `
+    <b>${cust}</b>
+    <p>${food}</p>
+      <p>Rating: ${rating}</p>
+      <p>${comment}</p>
+    `;
+    commentSection.appendChild(commentDiv);
+
+    document.getElementById('rating').selectedIndex = 0;
+    document.getElementById('comment').value = '';
+  }
+}
+</script> -->
+
